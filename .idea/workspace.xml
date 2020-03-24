@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5231785-876f-43fa-8dda-2f9e2b5110b2" name="Default Changelist" comment="" />
+    <list default="true" id="b5231785-876f-43fa-8dda-2f9e2b5110b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/company/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/company/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/company/viewsets.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +18,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ZUdAwT53ciftoj7oLZfSlzJpM4" />
   <component name="ProjectViewState">
