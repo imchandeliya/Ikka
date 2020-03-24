@@ -39,6 +39,8 @@ class PurchaseSerializer(serializers.ModelSerializer):
         raise NotAcceptable("company id :" + str(company_id) + ", product company id:" + str(product_company_id))
         return attrs
 
+
+
     # def create(self, validated_data):
     #
     #     purchase = PurchaseModel(validated_data)

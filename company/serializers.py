@@ -8,6 +8,10 @@ class CompanySerializer(serializers.ModelSerializer):
         model = CompanyModel
         fields = '__all__'
 
+    def validate(self, attrs):
+        CompanySerializer.validate_company_name(self, attrs)
+        CompanySerializer.validate_gst_number(self, attrs)
+
     # Validate company name
     def validate_company_name(self, value):
         company_name = str(value)
