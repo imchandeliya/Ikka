@@ -1,9 +1,6 @@
 from rest_framework import serializers
 from rest_framework.exceptions import NotAcceptable
 from product.models import ProductModel
-from company.models import CompanyModel
-from company.viewsets import CompanyViewSet
-
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
