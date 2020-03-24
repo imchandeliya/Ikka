@@ -27,9 +27,8 @@ class ProductSerializer(serializers.ModelSerializer):
     # check if there are existing products in the company with same name
     def checkExistingProductName(self, data):
         product_name_raw = data['product_name']
-        company = data['company']
 
-        product_list = ProductModel.objects.filter(product_name=product_name_raw, company=company)
+        product_list = ProductModel.objects.filter(product_name=product_name_raw)
         if len(product_list) > 0:
             raise NotAcceptable("product already present:" + str(product_list[0].product_name) + ", cost" + str(
                 product_list[0].cost))

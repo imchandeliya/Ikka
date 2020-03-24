@@ -9,6 +9,3 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     queryset = models.ProductModel.objects.all()
     serializer_class = serializers.ProductSerializer
-
-    def post(self):
-        raise NotAcceptable('dekhte hai chalta hai ya nahi ye')
