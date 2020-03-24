@@ -1,9 +1,7 @@
-from django.http import HttpResponse
-from django import forms
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from . import serializers
+from rest_framework import viewsets
+
 from . import models
+from . import serializers
 
 
 class CompanyViewSet(viewsets.ModelViewSet):

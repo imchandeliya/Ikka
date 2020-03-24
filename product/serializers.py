@@ -1,8 +1,43 @@
 from rest_framework import serializers
-from .models import ProductModel
+from rest_framework.exceptions import NotAcceptable
+from product.models import ProductModel
+from company.models import CompanyModel
+from company.viewsets import CompanyViewSet
 
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductModel
         fields = '__all__'
+
+    """validate attributes"""
+
+    def validate(self, attrs):
+        product_name = str(attrs['product_name'])
+        if len(product_name) <= 5:
+            raise NotAcceptable('product name should be atleast 5 digits')
+
+        try:
+            product_cost = int(attrs['cost'])
+            if float(product_cost) <= 0:
+                raise NotAcceptable('cost cannot be 0 or negative')
+        except:
+            raise NotAcceptable('cost must be a number')
+
+        ProductSerializer.checkExistingProductName(self, attrs)
+        return attrs
+
+    def checkExistingProductName(self, data):
+        product_name_raw = data['product_name']
+        try:
+            product_list = ProductModel.objects.filter(product_name=product_name_raw)
+            if len(product_list) > 0:
+                raise NotAcceptable("product already present:" + str(product_list[0].product_name) + ", cost" + str(
+                    product_list[0].cost))
+            else:
+                return data
+        except ProductModel.DoesNotExist:
+            product = None
+            # raise NotAcceptable("product : None")
+
+        return data
