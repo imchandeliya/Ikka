@@ -2,13 +2,13 @@ from rest_framework import serializers
 from rest_framework.exceptions import NotAcceptable
 from product.models import ProductModel
 
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductModel
         fields = '__all__'
 
-    """validate attributes"""
-
+    # validate attributes
     def validate(self, attrs):
         product_name = str(attrs['product_name'])
         if len(product_name) <= 5:
@@ -24,17 +24,14 @@ class ProductSerializer(serializers.ModelSerializer):
         ProductSerializer.checkExistingProductName(self, attrs)
         return attrs
 
+    # check if there are existing products in the company with same name
     def checkExistingProductName(self, data):
         product_name_raw = data['product_name']
-        try:
-            product_list = ProductModel.objects.filter(product_name=product_name_raw)
-            if len(product_list) > 0:
-                raise NotAcceptable("product already present:" + str(product_list[0].product_name) + ", cost" + str(
-                    product_list[0].cost))
-            else:
-                return data
-        except ProductModel.DoesNotExist:
-            product = None
-            # raise NotAcceptable("product : None")
+        company = data['company']
+
+        product_list = ProductModel.objects.filter(product_name=product_name_raw, company=company)
+        if len(product_list) > 0:
+            raise NotAcceptable("product already present:" + str(product_list[0].product_name) + ", cost" + str(
+                product_list[0].cost))
 
         return data

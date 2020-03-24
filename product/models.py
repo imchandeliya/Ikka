@@ -5,7 +5,7 @@ from company.models import CompanyModel
 
 
 class ProductModel(models.Model):
-    product_name = models.CharField(max_length=20)
+    product_name = models.CharField(max_length=100, unique=True, null=False)
     company = models.ForeignKey(CompanyModel, on_delete=models.CASCADE)
     cost = models.IntegerField(null=False, default=0)
 
